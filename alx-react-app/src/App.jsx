@@ -2,6 +2,7 @@ import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
+import UserProfile from './components/UserProfile'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -16,6 +17,11 @@ function App() {
      <Header />
      <MainContent />
      <Footer />
+     <UserProfile />
+     <div>
+      <h1>My React App</h1>
+      <UserProfile name="Annie" age="25" bio="Loves to watch movies." />
+    </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
