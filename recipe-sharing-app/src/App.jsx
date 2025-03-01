@@ -12,8 +12,6 @@ function App() {
         <h1>Recipe Sharing App</h1>
         <SearchBar /> {/* ✅ Add SearchBar */}
         <AddRecipeForm />
-        <FavoritesList />
-        <RecommendationsList />
         <Routes>
           <Route path="/" element={<RecipeList />} />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
