@@ -1,25 +1,28 @@
-import { useRecipeStore } from "./recipeStore";
+import create from 'zustand';
 
-const RecommendationsList = () => {
-  const recommendations = useRecipeStore((state) => state.recommendations);
-  const generateRecommendations = useRecipeStore((state) => state.generateRecommendations);
+const useRecipeStore = create((set) => ({
+  recipes: [],
+  favorites: [],
+  searchTerm: '', // 🔥 Added searchTerm to prevent the missing error
+  setSearchTerm: (term) => set({ searchTerm: term }), // 🔥 Added setSearchTerm
 
-  return (
-    <div>
-      <h2>Recommended Recipes</h2>
-      <button onClick={generateRecommendations}>Get Recommendations</button>
-      {recommendations.length > 0 ? (
-        recommendations.map((recipe) => (
-          <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
-          </div>
-        ))
-      ) : (
-        <p>No recommendations yet. Add favorites to get suggestions!</p>
-      )}
-    </div>
-  );
-};
+  addFavorite: (recipeId) =>
+    set((state) => ({ favorites: [...state.favorites, recipeId] })),
 
-export default RecommendationsList;
+  removeFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: state.favorites.filter((id) => id !== recipeId),
+    })),
+
+  recommendations: [],
+  generateRecommendations: () =>
+    set((state) => {
+      // Mock recommendations based on favorites
+      const recommended = state.recipes.filter(
+        (recipe) => state.favorites.includes(recipe.id) && Math.random() > 0.5
+      );
+      return { recommendations: recommended };
+    }),
+}));
+
+export default useRecipeStore;
