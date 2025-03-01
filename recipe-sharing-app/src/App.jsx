@@ -3,7 +3,8 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar'; // ✅ Import SearchBar
-
+import RecommendationsList from './components/RecommendationsList';
+import FavoritesList from './components/FavoritesList';
 function App() {
   return (
     <Router>
@@ -11,6 +12,8 @@ function App() {
         <h1>Recipe Sharing App</h1>
         <SearchBar /> {/* ✅ Add SearchBar */}
         <AddRecipeForm />
+        <FavoritesList />
+        <RecommendationsList />
         <Routes>
           <Route path="/" element={<RecipeList />} />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
