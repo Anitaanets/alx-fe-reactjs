@@ -1,6 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import TodoList from '../components/TodoList';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import TodoList from './TodoList';
 
 describe('TodoList Component', () => {
     test('renders initial todos', () => {
@@ -9,7 +8,7 @@ describe('TodoList Component', () => {
         expect(screen.getByText('Build a Todo App')).toBeInTheDocument();
     });
 
-    test('adds a new todo', () => {
+    test('adds a new todo', async () => {
         render(<TodoList />);
         const input = screen.getByTestId('add-todo-input');
         const addButton = screen.getByTestId('add-todo-button');
@@ -17,10 +16,10 @@ describe('TodoList Component', () => {
         fireEvent.change(input, { target: { value: 'New Todo' } });
         fireEvent.click(addButton);
 
-        expect(screen.getByText('New Todo')).toBeInTheDocument();
+        await waitFor(() => expect(screen.getByText('New Todo')).toBeInTheDocument());
     });
 
-    test('toggles a todo completion status', () => {
+    test('toggles a todo completion status', async () => {
         render(<TodoList />);
         const todoItem = screen.getByTestId('todo-item-1'); // 'Learn React'
 
@@ -29,19 +28,19 @@ describe('TodoList Component', () => {
 
         // Click to toggle completion
         fireEvent.click(todoItem);
-        expect(todoItem).toHaveStyle('text-decoration: line-through');
+        await waitFor(() => expect(todoItem).toHaveStyle('text-decoration: line-through'));
 
         // Click again to revert
         fireEvent.click(todoItem);
-        expect(todoItem).not.toHaveStyle('text-decoration: line-through');
+        await waitFor(() => expect(todoItem).not.toHaveStyle('text-decoration: line-through'));
     });
 
-    test('deletes a todo', () => {
+    test('deletes a todo', async () => {
         render(<TodoList />);
         const deleteButton = screen.getByTestId('delete-button-1');
 
         fireEvent.click(deleteButton);
 
-        expect(screen.queryByText('Learn React')).not.toBeInTheDocument();
+        await waitFor(() => expect(screen.queryByText('Learn React')).not.toBeInTheDocument());
     });
 });
