@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Profile from './pages/Profile';
+import BlogPost from './pages/BlogPost';  // Import the BlogPost component
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -11,6 +12,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/profile/*" element={<Profile />} />
+                
+                {/* Dynamic Routing for Blog Posts */}
+                <Route path="/blog/:id" element={<BlogPost />} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
