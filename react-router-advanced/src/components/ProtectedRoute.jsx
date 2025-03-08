@@ -1,7 +1,11 @@
-import { Navigate } from 'react-router-dom';
+import { useState } from 'react';
 
-const ProtectedRoute = ({ isAuthenticated, children }) => {
-    return isAuthenticated ? children : <Navigate to="/" />;
+export const useAuth = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Simulate login/logout for testing
+    const login = () => setIsAuthenticated(true);
+    const logout = () => setIsAuthenticated(false);
+
+    return { isAuthenticated, login, logout };
 };
-
-export default ProtectedRoute;
