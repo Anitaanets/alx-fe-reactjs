@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import data from '../data.json';
 
 const RecipeDetail = () => {
-  const { id } = useParams(); // Extract the recipe ID from the URL
-  const recipe = data.find((recipe) => recipe.id === parseInt(id));
+  const { id } = useParams(); // Extract recipe ID from URL
+  const [recipe, setRecipe] = useState(null);
 
+  // Fetch recipe data when component mounts
+  useEffect(() => {
+    const selectedRecipe = data.find((recipe) => recipe.id === parseInt(id));
+    setRecipe(selectedRecipe);
+  }, [id]);
+
+  // Handle invalid recipe ID
   if (!recipe) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-red-100 text-red-500 text-xl">
-        Recipe not found! <Link to="/" className="ml-2 text-blue-500 underline">Back to Home</Link>
+        Recipe not found! 
+        <Link to="/" className="ml-2 text-blue-500 underline">Back to Home</Link>
       </div>
     );
   }
@@ -25,7 +33,7 @@ const RecipeDetail = () => {
 
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
-          
+
           <h2 className="text-2xl font-semibold mt-4 mb-2">Ingredients</h2>
           <ul className="list-disc list-inside text-gray-600 dark:text-gray-300">
             {recipe.ingredients?.map((ingredient, index) => (
