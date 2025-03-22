@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import data from '../data.json'; 
+import { Link } from 'react-router-dom';
+import data from '../data.json';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    setRecipes(data);
+    setRecipes(data); // Load mock data into state
   }, []);
 
   return (
@@ -14,21 +15,24 @@ const HomePage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {recipes.map((recipe) => (
-          <div
-            key={recipe.id}
-            className="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden 
-                       hover:shadow-xl hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src={recipe.image}
-              alt={recipe.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-bold">{recipe.title}</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{recipe.summary}</p>
+          <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+            <div
+              className="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden 
+                         hover:shadow-xl hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h2 className="text-xl font-bold">{recipe.title}</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {recipe.summary}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

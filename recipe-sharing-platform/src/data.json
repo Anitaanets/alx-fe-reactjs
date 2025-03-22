@@ -3,18 +3,43 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300"
+    "image": "https://via.placeholder.com/300",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta",
+      "2 large eggs",
+      "50g parmesan cheese",
+      "Freshly ground black pepper"
+    ],
+    "instructions": "Cook the spaghetti in salted boiling water. Meanwhile, fry the pancetta in a pan until crispy. Beat the eggs in a bowl and mix with grated parmesan. Drain the spaghetti, combine it with the pancetta, and remove from heat. Quickly stir in the egg and cheese mixture to create a creamy sauce. Season with freshly ground black pepper and serve immediately."
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken cooked in a smooth buttery & creamy tomato-based gravy.",
-    "image": "https://via.placeholder.com/300"
+    "image": "https://via.placeholder.com/300",
+    "ingredients": [
+      "500g chicken breast",
+      "2 tbsp tikka masala paste",
+      "200ml tomato sauce",
+      "100ml cream",
+      "1 tbsp butter"
+    ],
+    "instructions": "Marinate the chicken in tikka masala paste for 1 hour. Grill the chicken until cooked through. In a pan, melt butter and add the tomato sauce. Stir in the grilled chicken and simmer for 10 minutes. Pour in the cream and cook for another 5 minutes. Serve with rice or naan bread."
   },
   {
     "id": 3,
     "title": "Vegetable Stir Fry",
     "summary": "A colorful mix of sautéed vegetables in a savory sauce.",
-    "image": "https://via.placeholder.com/300"
+    "image": "https://via.placeholder.com/300",
+    "ingredients": [
+      "1 cup broccoli florets",
+      "1 red bell pepper, sliced",
+      "1 cup snap peas",
+      "2 tbsp soy sauce",
+      "1 tbsp sesame oil",
+      "1 garlic clove, minced"
+    ],
+    "instructions": "Heat sesame oil in a large pan. Add garlic and sauté for 30 seconds. Toss in the broccoli, bell pepper, and snap peas. Stir fry for 5-7 minutes until crisp-tender. Add soy sauce and stir well. Serve immediately over steamed rice or noodles."
   }
 ]
