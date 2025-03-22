@@ -10,8 +10,10 @@ const AddRecipeForm = () => {
     const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value // Explicitly using e.target.value
+        });
     };
 
     const validateForm = () => {
@@ -42,7 +44,7 @@ const AddRecipeForm = () => {
                         type="text" 
                         name="title" 
                         value={formData.title} 
-                        onChange={handleChange} 
+                        onChange={(e) => handleChange(e)} // Explicit usage here
                         className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" 
                     />
                     {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
@@ -53,7 +55,7 @@ const AddRecipeForm = () => {
                     <textarea
                         name="ingredients"
                         value={formData.ingredients}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e)} // Explicit usage here
                         rows="3"
                         className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
@@ -65,7 +67,7 @@ const AddRecipeForm = () => {
                     <textarea
                         name="steps"
                         value={formData.steps}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e)} // Explicit usage here
                         rows="4"
                         className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
