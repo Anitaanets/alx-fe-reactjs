@@ -22,6 +22,19 @@ function Search() {
 
   return (
     <div>
+      <form onSubmit={handleSearch} className="flex gap-2 mb-4">
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter GitHub username"
+          className="p-2 border rounded w-full"
+        />
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+          Search
+        </button>
+      </form>
+
       {/* Conditional Rendering for Loading and Error Messages */}
       {status === 'loading' && <p className="text-blue-500">Loading...</p>}
       {status === 'error' && <p className="text-red-500">Looks like we can't find the user</p>}
