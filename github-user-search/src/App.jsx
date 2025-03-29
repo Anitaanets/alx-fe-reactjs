@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { fetchGitHubUser } from './services/githubService';
 import SearchInput from './components/SearchInput';
+import Search from './components/Search';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,6 +16,7 @@ function App() {
   };
 
   return (
+    <>
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">GitHub User Search</h1>
       <SearchInput onSearch={handleSearch} />
@@ -34,6 +36,13 @@ function App() {
         </div>
       )}
     </div>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-4">
+        <h1 className="text-3xl font-bold text-center mb-4">GitHub User Search</h1>
+        <Search />
+      </div>
+    </div>
+    </>
   );
 }
 

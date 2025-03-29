@@ -14,4 +14,7 @@ export const fetchGitHubUser = async (username) => {
     console.error('Error fetching data:', error);
     throw error;
   }
+  
 };
+
+export default fetchGitHubUser
