@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const fetchUserData = async (username, location = '', minRepos = '') => {
   const query = [
     username && `user:${username}`,
@@ -7,10 +8,10 @@ export const fetchUserData = async (username, location = '', minRepos = '') => {
     .filter(Boolean)
     .join('+');
 
-  const response = await fetch(`https://api.github.com/search/users?q=${query}`);
+  const response = await axios.get (`https://api.github.com/search/users?q=${query}`);
 
   if (!response.ok) {
-    throw new Error('User not found');
+    throw new Error('Looks like we cant find the user');
   }
 
   const data = await response.json();
