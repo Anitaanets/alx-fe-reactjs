@@ -59,7 +59,7 @@ function Search() {
 
       {/* Conditional Messages */}
       {status === 'loading' && <p className="text-blue-500">Loading...</p>}
-      {status === 'error' && <p className="text-red-500">Looks like we can't find the user</p>}
+      {status === 'error' && <p className="text-red-500">Looks like we cant find the user</p>}
       {status === 'empty' && <p className="text-yellow-500">Please enter at least one search parameter</p>}
 
       {/* Display Results */}
