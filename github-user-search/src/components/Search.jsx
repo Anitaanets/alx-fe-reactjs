@@ -4,10 +4,16 @@ import { fetchUserData } from '../services/githubService';
 function Search() {
   const [username, setUsername] = useState('');
   const [user, setUser] = useState(null);
-  const [status, setStatus] = useState(''); // 'loading', 'error', 'success'
+  const [status, setStatus] = useState(''); // 'loading', 'error', 'success', 'empty'
 
   const handleSearch = async (e) => {
     e.preventDefault();
+
+    if (!username.trim()) {
+      setStatus('empty'); // Show empty field error
+      return;
+    }
+
     setStatus('loading'); // Show loading message
     setUser(null); // Clear previous data
 
@@ -15,7 +21,8 @@ function Search() {
       const data = await fetchUserData(username);
       setUser(data);
       setStatus('success'); // Show user data on success
-    } catch {
+    } catch (error) {
+      console.error('Error fetching user data:', error);
       setStatus('error'); // Show error message
     }
   };
@@ -37,7 +44,12 @@ function Search() {
 
       {/* Conditional Rendering for Loading and Error Messages */}
       {status === 'loading' && <p className="text-blue-500">Loading...</p>}
-      {status === 'error' && <p className="text-red-500">Looks like we can't find the user</p>}
+      {status === 'error' && (
+        <p className="text-red-500">Looks like we can't find the user</p>
+      )}
+      {status === 'empty' && (
+        <p className="text-yellow-500">Please enter a GitHub username</p>
+      )}
 
       {/* User Data Display */}
       {user && (
